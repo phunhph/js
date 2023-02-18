@@ -44,22 +44,25 @@
     </table> 
     <script>
     /* thiết lập sự kiện nhập dữ liệu 1 hàng */
-    var ClickA = document.getElementById("add");
-     ClickA.onclick = Addrow;
+    var clickA = document.getElementById("add");
+     clickA.onclick = Addrow;
     var index = 1;
       //hàm tạo hàng và nhận dữ liệu của hàng
+      //var có thể thay đổi khi khởi tạo một biến khởi tạo
+      //let không thể khai báo lại biến khởi tạo khi đã khai báo biến khởi tạo có thể dùng làm vòng lặp trong một block scope
+      //const hằng số không thể thay đổi có block scope, dùng còn để dùng tạo một biến khởi tạo có giá trị nhất định
     function Addrow() {
-        var tbody = document.getElementById("tbody");
+        let tbody = document.getElementById("tbody");
         console.log(tbody);
         //tạo một hàng trong bảng
-        var tr1 = document.createElement("tr");
-        var tdHoTen = document.createElement("td");
-        var tdNgaysinh = document.createElement("td");
-        var tdDiemToan = document.createElement("td");
-        var tdDiemLY = document.createElement("td");
-        var tdDiemHoa = document.createElement("td");
-        var tdDiemTB = document.createElement("td");
-        var tdHocLuc = document.createElement("td");
+        let tr1 = document.createElement("tr");
+        let tdHoTen = document.createElement("td");
+        let tdNgaysinh = document.createElement("td");
+        let tdDiemToan = document.createElement("td");
+        let tdDiemLY = document.createElement("td");
+        let tdDiemHoa = document.createElement("td");
+        let tdDiemTB = document.createElement("td");
+        let tdHocLuc = document.createElement("td");
         // thiết lập id cho các ô điểm của tường hàng và id của các hàng
         tr1.id = index;
         tdDiemToan.id = "Dtoan" + index;
@@ -77,50 +80,45 @@
         tr1.append(tdDiemTB);
         tr1.append(tdHocLuc);
         //đưa dữ liệu từ input vào bảng
-        var nhapName =document.getElementById("name").value; 
+        let nhapName =document.getElementById("name").value; 
         tdHoTen.innerHTML= nhapName;
-        var ngaySinh =document.getElementById("date").value; 
+        let ngaySinh =document.getElementById("date").value; 
         tdNgaysinh.innerHTML= ngaySinh;
-        var nhapToan =document.getElementById("toan").value; 
+        let nhapToan =document.getElementById("toan").value; 
         tdDiemToan.innerHTML= nhapToan;
-        var nhapLy =document.getElementById("ly").value; 
+        let nhapLy =document.getElementById("ly").value; 
         tdDiemLY.innerHTML= nhapLy;
-        var nhapHoa =document.getElementById("hoa").value; 
+        let nhapHoa =document.getElementById("hoa").value; 
         tdDiemHoa.innerHTML= nhapHoa;
         index++;
         }
          // khởi tạo sự kiện tính điểm trung bình
-        var ClickTB = document.getElementById("avg");
-         ClickTB.onclick = DIemTrungBinh;
+        var clickTB = document.getElementById("avg");
+         clickTB.onclick = DIemTrungBinh;
         function DIemTrungBinh() {
-            for(var i =1 ;i<index;i++){
-              var rowtoan =document.getElementById("Dtoan"+i);
-                  // console.log(rowtoan.innerHTML)
-              var rowly = document.getElementById("Dly"+i);
-                  // console.log(rowly.innerHTML)
-              var rowhoa = document.getElementById("Dhoa"+i);
-                  // console.log(rowhoa.innerHTML)
-              var rowDTB = document.getElementById("Dtb"+i)
-                  // console.log(rowDTB.innerHTML)
-              rowDTB.innerHTML=(rowtoan.innerHTML-(-rowly.innerHTML)-(- rowhoa.innerHTML))/3;
-                  // console.log(rowDTB.innerHTML);
+            for(let i =1 ;i<index;i++){
+              let rowtoan =document.getElementById("Dtoan"+i);    
+              let rowly = document.getElementById("Dly"+i);    
+              let rowhoa = document.getElementById("Dhoa"+i);
+              let rowDTB = document.getElementById("Dtb"+i)
+              rowDTB.innerHTML=(rowtoan.innerHTML-(-rowly.innerHTML)-(- rowhoa.innerHTML))/3;   
             }
           }
         // khởi tạo sự kiện học lực
-        var ClickHL = document.getElementById("confirm");
-         ClickHL.onclick = HocLuc;
+        var clickHL = document.getElementById("confirm");
+         clickHL.onclick = HocLuc;
          function HocLuc() {
-          for(var i=1;i<index;i++){
-            var rowchecl = document.getElementById("Dtb"+i);
-            var rowHL = document.getElementById("HL"+i);
+          for(let i=1;i<index;i++){
+            let rowchecl = document.getElementById("Dtb"+i);
+            let rowHL = document.getElementById("HL"+i);
             if(10>=rowchecl.innerHTML&&rowchecl.innerHTML>=9){
               rowHL.innerHTML="Xuất sắc";
             } else if(rowchecl.innerHTML>=8){
               rowHL.innerHTML="Giỏi";
             } else if(rowchecl.innerHTML>=6.5){
-              rowHL.innerHTML="Khá"
+              rowHL.innerHTML="Khá";
             } else if(rowHL.innerHTML>=5){
-              rowHL.innerHTML="Trung bình"
+              rowHL.innerHTML="Trung bình";
             } else {
               rowHL.innerHTML="Yếu";
           }
