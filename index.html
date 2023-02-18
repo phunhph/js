@@ -5,52 +5,125 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="show" style="display: none">
-      <p id="name"></p>
-      <p id="from"></p>
-      <p id="phone"></p>
-      <p id="age"></p>
-      <p id="check"></p>
-    </div>
-    <button id="shows">click and shows</button>
+   <div>
+    <p>Tên</p>
+    <input type="text" id="name" />
+    <p>DOB</p>
+    <input type="date" id="date" />
+    <p>Điểm toán</p>
+    <input type="text" id="toan" />
+    <p>Điểm lý</p>
+    <input type="text" id="ly" />
+    <p>Điểm hoá</p>
+    <input type="text" id="hoa" />
+    <br />
+    <br />
+    <button id="add">Nhập</buttom>
+    <button id="avg">Tính điểm trung bình</button>
+    <button id="confirm">Học lực</button>
+<br>
+   </div> 
+    <table style="border: solid">
+      <thead>
+        <tr>
+          <th>Họ Tên</th>
+          <th>Ngày sinh</th>
+          <th>Điểm toán</th>
+          <th>Điểm lý</th>
+          <th>Điểm hoá</th>
+          <th>Điểm trung bình</th>
+          <th>Học lực</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+
+      </tbody>
+    </table> 
     <script>
-      //yc 1
-      // hiển thị khi vào trang web
-      alert("Chào mừng bạn đến với ứng dụng JavaScript đầu tiên");
-      //yc2+3
-      //nhập từ bàn phím
-      var name = prompt("Vui lòng nhập tên: ");
-      var from = prompt("Vui lòng nhập thành phố: ");
-      var phone = prompt("Vui lòng nhập số điện thoại: ");
-      //lấy thẻ có id: name
-      var theP = document.getElementById("name");
-      var theP1 = document.getElementById("from");
-      var theP2 = document.getElementById("phone");
-      var theP3 = document.getElementById("age");
-      var thep4 = document.getElementById("check");
-      var thep5 = document.getElementById("show");
-      // gán giá trị nhận được vào thẻ P có id: name
-      theP.innerHTML = "tên:" + name;
-      theP1.innerHTML = "thành phố:" + from;
-      theP2.innerHTML = "số điện thoại:" + phone;
-      var check = true;
-      while (check) {
-        var age = prompt("Vui lòng nhập năm sinh: ");
-        var now = new Date().getFullYear();
-        if (age > now) {
-          alert("Bạn đùa tôi ak năm nay là năm" + now + "nhập lại đi");
-        } else {
-          theP3.innerHTML = "tuổi:" + (now - age) + "<b>";
-          check = false;
+    /* thiết lập sự kiện nhập dữ liệu 1 hàng */
+    var clickA = document.getElementById("add");
+     clickA.onclick = Addrow;
+    var index = 1;
+      //hàm tạo hàng và nhận dữ liệu của hàng
+      //var có thể thay đổi khi khởi tạo một biến khởi tạo
+      //let không thể khai báo lại biến khởi tạo khi đã khai báo biến khởi tạo có thể dùng làm vòng lặp trong một block scope
+      //const hằng số không thể thay đổi có block scope, dùng còn để dùng tạo một biến khởi tạo có giá trị nhất định
+    function Addrow() {
+        let tbody = document.getElementById("tbody");
+        console.log(tbody);
+        //tạo một hàng trong bảng
+        let tr1 = document.createElement("tr");
+        let tdHoTen = document.createElement("td");
+        let tdNgaysinh = document.createElement("td");
+        let tdDiemToan = document.createElement("td");
+        let tdDiemLY = document.createElement("td");
+        let tdDiemHoa = document.createElement("td");
+        let tdDiemTB = document.createElement("td");
+        let tdHocLuc = document.createElement("td");
+        // thiết lập id cho các ô điểm của tường hàng và id của các hàng
+        tr1.id = index;
+        tdDiemToan.id = "Dtoan" + index;
+        tdDiemLY.id = "Dly" + index;
+        tdDiemHoa.id = "Dhoa" + index;
+        tdDiemTB.id = "Dtb" + index;
+        tdHocLuc.id ="HL"+index;
+        // thêm ô vào hàng đã được tạo
+        tbody.append(tr1)
+        tr1.append(tdHoTen);
+        tr1.append(tdNgaysinh);
+        tr1.append(tdDiemToan);
+        tr1.append(tdDiemLY);
+        tr1.append(tdDiemHoa);
+        tr1.append(tdDiemTB);
+        tr1.append(tdHocLuc);
+        //đưa dữ liệu từ input vào bảng
+        let nhapName =document.getElementById("name").value; 
+        tdHoTen.innerHTML= nhapName;
+        let ngaySinh =document.getElementById("date").value; 
+        tdNgaysinh.innerHTML= ngaySinh;
+        let nhapToan =document.getElementById("toan").value; 
+        tdDiemToan.innerHTML= nhapToan;
+        let nhapLy =document.getElementById("ly").value; 
+        tdDiemLY.innerHTML= nhapLy;
+        let nhapHoa =document.getElementById("hoa").value; 
+        tdDiemHoa.innerHTML= nhapHoa;
+        index++;
         }
-      }
-      //yc4
-      document.getElementById("shows").onclick = shows;
-      function shows() {
-        thep5.style = "";
-      }
+         // khởi tạo sự kiện tính điểm trung bình
+        var clickTB = document.getElementById("avg");
+         clickTB.onclick = DIemTrungBinh;
+        function DIemTrungBinh() {
+            for(let i =1 ;i<index;i++){
+              let rowtoan =document.getElementById("Dtoan"+i);    
+              let rowly = document.getElementById("Dly"+i);    
+              let rowhoa = document.getElementById("Dhoa"+i);
+              let rowDTB = document.getElementById("Dtb"+i)
+              rowDTB.innerHTML=(rowtoan.innerHTML-(-rowly.innerHTML)-(- rowhoa.innerHTML))/3;   
+            }
+          }
+        // khởi tạo sự kiện học lực
+        var clickHL = document.getElementById("confirm");
+         clickHL.onclick = HocLuc;
+         function HocLuc() {
+          for(let i=1;i<index;i++){
+            let rowchecl = document.getElementById("Dtb"+i);
+            let rowHL = document.getElementById("HL"+i);
+            if(10>=rowchecl.innerHTML&&rowchecl.innerHTML>=9){
+              rowHL.innerHTML="Xuất sắc";
+            } else if(rowchecl.innerHTML>=8){
+              rowHL.innerHTML="Giỏi";
+            } else if(rowchecl.innerHTML>=6.5){
+              rowHL.innerHTML="Khá";
+            } else if(rowHL.innerHTML>=5){
+              rowHL.innerHTML="Trung bình";
+            } else {
+              rowHL.innerHTML="Yếu";
+          }
+         }
+        }
     </script>
   </body>
 </html>
