@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+main {
+  width: 96%;
+  margin: 25px;
+  display: grid;
+  grid-template-columns: 16.8% 16.8% 16.8% 16.8% 16.8% 16.8%;
+}
+.conten {
+  border: 3px solid rebeccapurple;
+  margin: 10px;
+  text-align: center;
+}
+img {
+  width: 100%;
+}
+#img {
+  width: 15%;
+  padding-left: 25px;
+}
+#img img {
+  width: 100%;
+}
+#text {
+  margin: 20px;
+}
