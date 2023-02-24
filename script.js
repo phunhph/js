@@ -9,7 +9,7 @@ fetch("http://localhost:8080/staffs")
       let data = document.createElement("div");
       let name = document.createElement("p");
       let img = document.createElement("img");
-      img.innerHTML = element.image;
+      img.src = element.image;
       name.innerHTML = element.name;
       //đưa ra màn hình
       document.getElementById("main").append(data);
@@ -21,13 +21,22 @@ fetch("http://localhost:8080/staffs")
       data.append(name);
       //khởi tạo sự kiện onclick
       data.onclick = Show;
+      img.onclick = Show;
+      name.onclick = Show;
       //lấy id đối tượng sảy ra sự kiện onclick
       data.id = element.id;
+      img.id = element.id;
+      name.id = element.id;
+      data.id = "conten";
+      console.log(data.id);
     });
     function Show(event) {
       //sử dụng forEach để lấy đối tựng id đi xét nếu trùng với id của sự kiện onclick thì hiểu thị ra màn hình
       post.forEach((element) => {
+        console.log(event.target.id);
+        console.log(element.id);
         if (element.id == event.target.id) {
+          document.getElementById("img").src = element.image;
           document.getElementById("name").innerHTML = element.name;
           document.getElementById("doB").innerHTML = element.doB;
           document.getElementById("vao").innerHTML = element.startDate;
@@ -42,7 +51,3 @@ fetch("http://localhost:8080/staffs")
   .catch((error) => {
     alert(error);
   });
-alert("do ảnh không có nên click phẩn trên của tên để hiện thị thông tin");
-alert(
-  "vì sự kiện onclick được khởi tạo vào thẻ div chứ không khởi tạo vào thẻ p hiển thị tên nhân viên"
-);

@@ -8,21 +8,28 @@ main {
   display: grid;
   grid-template-columns: 16.8% 16.8% 16.8% 16.8% 16.8% 16.8%;
 }
-.conten {
+
+#conten {
   border: 3px solid rebeccapurple;
   margin: 10px;
   text-align: center;
 }
 img {
-  width: 100%;
+  width: 80%;
+}
+
+p {
+  margin-left: 15%;
+}
+table {
+  margin-left: 2%;
+}
+.img {
+  width: 10%;
 }
 #img {
-  width: 15%;
-  padding-left: 25px;
-}
-#img img {
   width: 100%;
 }
-#text {
-  margin: 20px;
+.text {
+  margin: 0;
 }
