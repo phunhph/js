@@ -5,52 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="show" style="display: none">
-      <p id="name"></p>
-      <p id="from"></p>
-      <p id="phone"></p>
-      <p id="age"></p>
-      <p id="check"></p>
-    </div>
-    <button id="shows">click and shows</button>
-    <script>
-      //yc 1
-      // hiển thị khi vào trang web
-      alert("Chào mừng bạn đến với ứng dụng JavaScript đầu tiên");
-      //yc2+3
-      //nhập từ bàn phím
-      var name = prompt("Vui lòng nhập tên: ");
-      var from = prompt("Vui lòng nhập thành phố: ");
-      var phone = prompt("Vui lòng nhập số điện thoại: ");
-      //lấy thẻ có id: name
-      var theP = document.getElementById("name");
-      var theP1 = document.getElementById("from");
-      var theP2 = document.getElementById("phone");
-      var theP3 = document.getElementById("age");
-      var thep4 = document.getElementById("check");
-      var thep5 = document.getElementById("show");
-      // gán giá trị nhận được vào thẻ P có id: name
-      theP.innerHTML = "tên:" + name;
-      theP1.innerHTML = "thành phố:" + from;
-      theP2.innerHTML = "số điện thoại:" + phone;
-      var check = true;
-      while (check) {
-        var age = prompt("Vui lòng nhập năm sinh: ");
-        var now = new Date().getFullYear();
-        if (age > now) {
-          alert("Bạn đùa tôi ak năm nay là năm" + now + "nhập lại đi");
-        } else {
-          theP3.innerHTML = "tuổi:" + (now - age) + "<b>";
-          check = false;
-        }
-      }
-      //yc4
-      document.getElementById("shows").onclick = shows;
-      function shows() {
-        thep5.style = "";
-      }
-    </script>
+    <h2>Nhân Viên</h2>
+    <hr />
+    <main id="main"></main>
+    <table>
+      <tr>
+        <td id="img"><img src="img/imager_4825.jpg" alt="" /></td>
+        <td id="text">
+          <h4 id="name"></h4>
+          <p id="doB"></p>
+          <p id="vao"></p>
+          <p id="pb"></p>
+          <p id="nghi"></p>
+          <p id="them"></p>
+        </td>
+      </tr>
+    </table>
+    <script src="script.js"></script>
   </body>
 </html>
