@@ -28,18 +28,18 @@ fetch("http://localhost:8080/staffs")
       img.id = element.id;
       name.id = element.id;
       data.id = "conten";
-      console.log(data.id);
     });
     function Show(event) {
       //sử dụng forEach để lấy đối tựng id đi xét nếu trùng với id của sự kiện onclick thì hiểu thị ra màn hình
       post.forEach((element) => {
-        console.log(event.target.id);
-        console.log(element.id);
         if (element.id == event.target.id) {
+          // chuyển đổi qua dạng DD/MM/YYY
+          let doB = new Date(element.doB);
+          let start = new Date(element.startDate);
           document.getElementById("img").src = element.image;
           document.getElementById("name").innerHTML = element.name;
-          document.getElementById("doB").innerHTML = element.doB;
-          document.getElementById("vao").innerHTML = element.startDate;
+          document.getElementById("doB").innerHTML = doB.toLocaleDateString();
+          document.getElementById("vao").innerHTML = start.toLocaleDateString();
           document.getElementById("pb").innerHTML = element.departmentId;
           document.getElementById("nghi").innerHTML = element.annualLeave;
           document.getElementById("them").innerHTML = element.overTime;
